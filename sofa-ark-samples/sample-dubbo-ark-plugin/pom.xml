@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>sofa-ark-samples</artifactId>
+        <groupId>com.alipay.sofa</groupId>
+        <version>0.2.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <main.user.dir>${user.dir}/..</main.user.dir>
+    </properties>
+
+    <artifactId>dubbo-ark-plugin</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.alipay.sofa</groupId>
+                <artifactId>sofa-ark-plugin-maven-plugin</artifactId>
+                <version>${project.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <goals>
+                            <goal>ark-plugin</goal>
+                        </goals>
+
+                        <configuration>
+
+                            <!-- configure exported class -->
+                            <exported>
+                                <!-- configure package-level exported class-->
+                                <packages>
+                                    <package>com.alibaba.dubbo.cache</package>
+                                    <package>com.alibaba.dubbo.common</package>
+                                    <package>com.alibaba.dubbo.config</package>
+                                    <package>com.alibaba.dubbo.monitor</package>
+                                    <package>com.alibaba.dubbo.qos</package>
+                                    <package>com.alibaba.dubbo.registry</package>
+                                    <package>com.alibaba.dubbo.remoting</package>
+                                    <package>com.alibaba.dubbo.rpc</package>
+                                    <package>com.alibaba.dubbo.validation</package>
+                                </packages>
+                            </exported>
+
+                            <!--specify destination where ark-plugin will be saved, default saved to ${project.build.directory}-->
+                            <outputDirectory>./target</outputDirectory>
+
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
