@@ -5,7 +5,7 @@
     <parent>
         <artifactId>sofa-ark-samples</artifactId>
         <groupId>com.alipay.sofa</groupId>
-        <version>0.2.0</version>
+        <version>0.3.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -25,6 +25,26 @@
                     <artifactId>spring-context</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo-rpc-http</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo-rpc-rmi</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo-container-spring</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo-config-spring</artifactId>
         </dependency>
     </dependencies>
 
@@ -47,19 +67,73 @@
                             <exported>
                                 <!-- configure package-level exported class-->
                                 <packages>
-                                    <package>com.alibaba.dubbo.cache</package>
-                                    <package>com.alibaba.dubbo.common</package>
-                                    <package>com.alibaba.dubbo.config</package>
-                                    <package>com.alibaba.dubbo.monitor</package>
-                                    <package>com.alibaba.dubbo.qos</package>
-                                    <package>com.alibaba.dubbo.registry</package>
-                                    <package>com.alibaba.dubbo.remoting</package>
+                                    <!-- dubbo rpc api -->
                                     <package>com.alibaba.dubbo.rpc</package>
-                                    <package>com.alibaba.dubbo.validation</package>
+                                    <package>com.alibaba.dubbo.rpc.filter.*</package>
+                                    <package>com.alibaba.dubbo.rpc.listener</package>
+                                    <package>com.alibaba.dubbo.rpc.protocol</package>
+                                    <package>com.alibaba.dubbo.rpc.proxy.*</package>
+                                    <package>com.alibaba.dubbo.rpc.service</package>
+                                    <package>com.alibaba.dubbo.rpc.support</package>
+                                    <!-- dubbo rpc common -->
+                                    <package>com.alibaba.dubbo.common.*</package>
+                                    <!-- dubbo serialization -->
+                                    <!--<package>com.alibaba.dubbo.common.serialize.*</package>-->
+                                    <!-- dubbo cluster-->
+                                    <package>com.alibaba.dubbo.rpc.cluster.*</package>
+                                    <!-- dubbo remoting-->
+                                    <package>com.alibaba.dubbo.remoting.*</package>
+                                    <!-- dubbo registry-->
+                                    <package>com.alibaba.dubbo.registry.*</package>
+                                    <!-- dubbo plugin -->
+                                    <package>com.alibaba.dubbo.qos.*</package>
+                                    <!-- dubbo monitor-->
+                                    <package>com.alibaba.dubbo.monitor.*</package>
+                                    <!-- dubbo filter -->
+                                    <package>com.alibaba.dubbo.cache.*</package>
+                                    <package>com.alibaba.dubbo.validation.*</package>
+                                    <!-- dubbo container api-->
+                                    <package>com.alibaba.dubbo.container</package>
+                                    <!-- dubbo container log4j-->
+                                    <package>com.alibaba.dubbo.container.log4j</package>
+                                    <!-- dubbo container logback -->
+                                    <package>com.alibaba.dubbo.container.logback</package>
+                                    <!-- dubbo config -->
+                                    <package>com.alibaba.dubbo.config</package>
+                                    <package>com.alibaba.dubbo.config.annotation</package>
+                                    <package>com.alibaba.dubbo.config.invoker</package>
+                                    <package>com.alibaba.dubbo.config.model</package>
+                                    <package>com.alibaba.dubbo.config.support</package>
+                                    <package>com.alibaba.dubbo.config.utils</package>
+                                    <!-- dubbo rpc dubbo-->
+                                    <package>com.alibaba.dubbo.rpc.protocol.dubbo.*</package>
+                                    <!-- dubbo rpc hessian-->
+                                    <package>com.alibaba.dubbo.rpc.protocol.hessian</package>
+                                    <!-- dubbo rpc injvm-->
+                                    <package>com.alibaba.dubbo.rpc.protocol.injvm</package>
+                                    <!-- dubbo rpc memcached -->
+                                    <package>com.alibaba.dubbo.rpc.protocol.memcached</package>
+                                    <!-- dubbo rpc redis -->
+                                    <package>com.alibaba.dubbo.rpc.protocol.redis</package>
+                                    <!-- dubbo rpc rest -->
+                                    <package>com.alibaba.dubbo.rpc.protocol.rest.*</package>
+                                    <!-- dubbo rpc thrift -->
+                                    <package>com.alibaba.dubbo.rpc.protocol.thrift.*</package>
+                                    <!-- dubbo rpc webservice-->
+                                    <package>com.alibaba.dubbo.rpc.protocol.webservice</package>
                                 </packages>
                             </exported>
 
-                            <!--specify destination where ark-plugin will be saved, default saved to ${project.build.directory}-->
+
+                            <!-- exclude jars that would not be packaged into dubbo-ark-plugin -->
+                            <excludeArtifactIds>
+                                <excludeArtifactId>dubbo-rpc-http</excludeArtifactId>
+                                <excludeArtifactId>dubbo-rpc-rmi</excludeArtifactId>
+                                <excludeArtifactId>dubbo-container-spring</excludeArtifactId>
+                                <excludeArtifactId>dubbo-config-spring</excludeArtifactId>
+                            </excludeArtifactIds>
+
+                            <!--specify destination where ab rk-plugin will be saved, default saved to ${project.build.directory}-->
                             <outputDirectory>./target</outputDirectory>
 
                         </configuration>
