@@ -130,7 +130,6 @@ public class FileUtils {
                             }
                         }
                         file.createNewFile();
-                        // 将压缩文件内容写入到这个文件中
                         fileOutputStream = new FileOutputStream(file);
                         int count;
                         byte[] buf = new byte[8192];
