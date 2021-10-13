@@ -29,31 +29,30 @@ import java.net.URL;
 import java.util.Enumeration;
 
 /**
+ * @author bingjie.lbj
  *
- * @author zhengbo.zb
- * @version : DelegateMasterBizClassLoaderHook.java, v 0.1 2020?05?03? 9:38 ?? renen.sun Exp $
  */
 @Extension("biz-classloader-hook")
 public class MasterBizClassLoaderHookAll implements ClassLoaderHook<Biz> {
 
-    public static String[] _UNPROXY_PACKAGE_ROOT = new String[] { "Class.class", "Object.class",
+    public static String[] _UNPROXY_PACKAGE_ROOT = new String[]{"Class.class", "Object.class",
             "com.class", "java/lang/com.class", "com/alipay.class", "Throwable.class",
             "String.class", "Boolean.class", "config/application.properties",
             "config/application.xml", "application.xml", "application.yml", "application.yaml",
             "config/application-default.properties", "config/application-default.xml",
             "config/application-default.yml", "config/application-default.yaml",
             "application-default.properties", "application-default.xml", "application-default.yml",
-            "log4j2"                            };
+            "log4j2"};
 
     @Override
     public Class<?> preFindClass(String name, ClassLoaderService classLoaderService, Biz biz)
-                                                                                             throws ClassNotFoundException {
+            throws ClassNotFoundException {
         return null;
     }
 
     @Override
     public Class<?> postFindClass(String name, ClassLoaderService classLoaderService, Biz biz)
-                                                                                              throws ClassNotFoundException {
+            throws ClassNotFoundException {
         if (inUnProxyPackage(name)) {
             return null;
         }
@@ -115,7 +114,6 @@ public class MasterBizClassLoaderHookAll implements ClassLoaderHook<Biz> {
     }
 
     private boolean inUnProxyResource(String resourceName) {
-        //资源类文件过滤掉
         if (StringUtil.isNotBlank(resourceName)) {
             for (String packageRoot : _UNPROXY_PACKAGE_ROOT) {
                 if (resourceName.startsWith(packageRoot)) {

@@ -214,7 +214,7 @@ public abstract class AbstractClasspathClassLoader extends URLClassLoader {
     }
 
     /**
-     * Real logic to load class，need to implement by Sub ClassLoader
+     * Real logic to load class, need to implement by Sub ClassLoader
      * @param name
      * @param resolve
      * @return
