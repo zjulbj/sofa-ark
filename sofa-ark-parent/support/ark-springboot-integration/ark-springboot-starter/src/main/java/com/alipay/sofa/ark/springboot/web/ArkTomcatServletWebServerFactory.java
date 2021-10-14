@@ -61,7 +61,6 @@ import static com.alipay.sofa.ark.spi.constant.Constants.ROOT_WEB_CONTEXT_PATH;
  * @author Brock Mills
  * @author Stephane Nicoll
  * @author Andy Wilkinson
- * @author Eddú Meléndez
  * @author Christoffer Sawicki
  * @author qilong.zql
  * @since 0.6.0
