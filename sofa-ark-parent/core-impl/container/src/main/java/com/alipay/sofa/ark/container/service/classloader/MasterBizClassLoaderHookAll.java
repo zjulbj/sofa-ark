@@ -31,6 +31,7 @@ import java.util.Enumeration;
 /**
  * @author bingjie.lbj
  *
+ * @version : DelegateMasterBizClassLoaderHook.java, v 0.1
  */
 @Extension("biz-classloader-hook")
 public class MasterBizClassLoaderHookAll implements ClassLoaderHook<Biz> {
@@ -114,6 +115,9 @@ public class MasterBizClassLoaderHookAll implements ClassLoaderHook<Biz> {
     }
 
     private boolean inUnProxyResource(String resourceName) {
+        if (!resourceName.endsWith(".class")) {
+            return true;
+        }
         if (StringUtil.isNotBlank(resourceName)) {
             for (String packageRoot : _UNPROXY_PACKAGE_ROOT) {
                 if (resourceName.startsWith(packageRoot)) {
