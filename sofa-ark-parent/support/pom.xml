@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>sofa-ark-parent</artifactId>
+        <groupId>com.alipay.sofa</groupId>
+        <version>1.1.7.4.embed.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>sofa-ark-support</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>ark-plugin-maven-plugin</module>
+        <module>ark-maven-plugin</module>
+        <module>ark-support-starter</module>
+        <module>ark-tools</module>
+        <module>ark-springboot-integration/ark-springboot-starter</module>
+        <module>ark-springboot-integration/ark-compatible-springboot1</module>
+        <module>ark-springboot-integration/ark-compatible-springboot2</module>
+        <module>ark-springboot-integration/ark-common-springboot</module>
+    </modules>
+
+</project>
