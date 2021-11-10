@@ -149,7 +149,8 @@ public class ClasspathLauncher extends ArkLauncher {
                 int pos = file.indexOf("!/");
                 File fatJarFile = new File(file.substring(0, pos));
                 String containerLib = file.substring(file.lastIndexOf("/") + 1);
-                String unpackDir = System.getProperty(Constants.EMBED_UNPACK_DIR, fatJarFile.getParent());
+                String unpackDir = System.getProperty(Constants.EMBED_UNPACK_DIR,
+                    fatJarFile.getParent());
                 return FileUtils.unzipEntry(fatJarFile, unpackDir, containerLib);
             } else {
                 return new File(file);

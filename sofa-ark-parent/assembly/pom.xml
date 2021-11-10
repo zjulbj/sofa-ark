@@ -4,13 +4,13 @@
     <parent>
         <artifactId>sofa-ark-parent</artifactId>
         <groupId>com.alipay.sofa</groupId>
-        <version>1.1.7.4.embed.5</version>
+        <version>1.1.7.4.embed.6</version>
     </parent>
 
     <artifactId>sofa-ark-all</artifactId>
 
     <properties>
-        <sofa.ark.name>sofa-ark-all-1.1.7.4.embed.5</sofa.ark.name>
+        <sofa.ark.name>sofa-ark-all-1.1.7.4.embed.6</sofa.ark.name>
     </properties>
 
     <dependencies>

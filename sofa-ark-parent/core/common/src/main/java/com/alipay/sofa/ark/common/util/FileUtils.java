@@ -118,7 +118,7 @@ public class FileUtils {
                     File dir = new File(dirPath);
                     dir.mkdirs();
                 } else {
-                    unzipEntry(zipFile,entry,targetPath + File.separator + entry.getName());
+                    unzipEntry(zipFile, entry, targetPath + File.separator + entry.getName());
                 }
             }
             return new File(targetPath);
@@ -149,7 +149,8 @@ public class FileUtils {
         }
     }
 
-    private static  File unzipEntry(ZipFile zipFile, ZipEntry entry, String targetEntryPath) throws IOException {
+    private static File unzipEntry(ZipFile zipFile, ZipEntry entry, String targetEntryPath)
+                                                                                           throws IOException {
         InputStream inputStream = null;
         FileOutputStream fileOutputStream = null;
         try {
