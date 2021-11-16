@@ -34,16 +34,14 @@ import java.util.List;
  */
 public abstract class AbstractLauncher {
 
-    private boolean embedEnable        = "true".equals(System.getProperty(Constants.EMBED_ENABLE));
-    private boolean urlProtocolDisable = "true".equals(System
-                                           .getProperty(Constants.URL_PROTOCOL_DISABLE));
+    private boolean embedEnable = "true".equals(System.getProperty(Constants.EMBED_ENABLE));
 
     /**
      * Launch the ark container. This method is the initial entry point when execute an fat jar.
      * @throws Exception if the ark container fails to launch.
      */
     public Object launch(String[] args) throws Exception {
-        if (!urlProtocolDisable) {
+        if (embedEnable) {
             JarFile.registerUrlProtocolHandler();
         }
         ClassLoader classLoader = createContainerClassLoader(getContainerArchive());
@@ -62,7 +60,7 @@ public abstract class AbstractLauncher {
      * @throws Exception if the ark container fails to launch.
      */
     public Object launch(String[] args, String classpath, Method method) throws Exception {
-        if (!urlProtocolDisable) {
+        if (embedEnable) {
             JarFile.registerUrlProtocolHandler();
         }
         ClassLoader classLoader = createContainerClassLoader(getContainerArchive());
@@ -87,9 +85,7 @@ public abstract class AbstractLauncher {
      * @throws Exception
      */
     public Object launch(String classpath, Class testClass) throws Exception {
-        if (!urlProtocolDisable) {
-            JarFile.registerUrlProtocolHandler();
-        }
+        JarFile.registerUrlProtocolHandler();
         ClassLoader classLoader = createContainerClassLoader(getContainerArchive());
         List<String> attachArgs = new ArrayList<>();
         attachArgs.add(String.format("%s%s=%s", CommandArgument.ARK_CONTAINER_ARGUMENTS_MARK,

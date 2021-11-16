@@ -139,7 +139,7 @@ public class ExplodedArchive implements Archive {
     /**
      * File based {@link Entry} {@link Iterator}.
      */
-    protected static class FileEntryIterator implements Iterator<Entry> {
+    private static class FileEntryIterator implements Iterator<Entry> {
 
         private final Comparator<File>      entryComparator = new EntryComparator();
 
@@ -221,7 +221,7 @@ public class ExplodedArchive implements Archive {
     /**
      * {@link Entry} backed by a File.
      */
-    protected static class FileEntry implements Entry {
+    private static class FileEntry implements Entry {
 
         private final String name;
 
