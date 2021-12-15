@@ -79,7 +79,8 @@ public class BizFactoryServiceImpl implements BizFactoryService {
             .setInjectExportPackages(manifestMainAttributes.getValue(INJECT_EXPORT_PACKAGES))
             .setClassPath(bizArchive.getUrls())
             .setClassLoader(
-                new BizClassLoader(bizModel.getIdentity(), getBizUcp(bizModel.getClassPath()), exploded));
+                new BizClassLoader(bizModel.getIdentity(), getBizUcp(bizModel.getClassPath()),
+                    exploded));
         return bizModel;
     }
 

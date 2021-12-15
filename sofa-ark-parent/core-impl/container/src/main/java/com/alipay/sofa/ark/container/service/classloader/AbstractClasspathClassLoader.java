@@ -92,7 +92,7 @@ public abstract class AbstractClasspathClassLoader extends URLClassLoader {
             .expireAfterWrite(30, SECONDS).recordStats().build();
     }
 
-    public AbstractClasspathClassLoader(URL[] urls,boolean exploded) {
+    public AbstractClasspathClassLoader(URL[] urls, boolean exploded) {
         this(urls);
         this.exploded = exploded;
     }
