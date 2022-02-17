@@ -17,8 +17,8 @@
 package com.alipay.sofa.ark.loader;
 
 import com.alipay.sofa.ark.common.util.FileUtils;
-import junit.framework.TestCase;
 import org.junit.Assert;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,8 +29,9 @@ import java.net.URLClassLoader;
  *
  * @author bingjie.lbj
  */
-public class ExplodedBizArchiveTest extends TestCase {
+public class ExplodedBizArchiveTest {
 
+    @Test
     public void testCreate() throws IOException {
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
         URL arkBizJar = cl.getResource("sample-biz-withjar.jar");
@@ -38,6 +39,38 @@ public class ExplodedBizArchiveTest extends TestCase {
                                                                      + "-unpack");
         ExplodedBizArchive archive = new ExplodedBizArchive(unpack);
         Assert.assertNotNull(archive.getManifest());
+        Assert.assertNotNull(archive.getUrl());
+
+        try {
+            archive.getInputStream(null);
+            Assert.assertTrue(false);
+        } catch (UnsupportedOperationException e){
+            Assert.assertTrue(true);
+        }
+        try {
+            archive.isEntryExist(entry -> true);
+            Assert.assertTrue(false);
+        } catch (UnsupportedOperationException e){
+            Assert.assertTrue(true);
+        }
+        try {
+            archive.getNestedArchive(null);
+            Assert.assertTrue(false);
+        } catch (UnsupportedOperationException e){
+            Assert.assertTrue(true);
+        }
+        try {
+            archive.getNestedArchives(null);
+            Assert.assertTrue(false);
+        } catch (UnsupportedOperationException e){
+            Assert.assertTrue(true);
+        }
+        try {
+            archive.iterator();
+            Assert.assertTrue(false);
+        } catch (UnsupportedOperationException e){
+            Assert.assertTrue(true);
+        }
         Assert.assertEquals(archive.getManifest().getMainAttributes().getValue("Ark-Biz-Name"),
             "sofa-ark-sample-springboot-ark");
         Assert.assertEquals(archive.getUrls().length, 3);
