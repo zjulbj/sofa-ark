@@ -415,7 +415,6 @@ public class RepackageMojo extends AbstractMojo {
             }
 
             if (excludeGroupIds != null) {
-                // 支持通配符
                 for (String excludeGroupId : excludeGroupIds) {
                     if (excludeGroupId.endsWith(Constants.PACKAGE_PREFIX_MARK)) {
                         excludeGroupId = ClassUtils.getPackageName(excludeGroupId);

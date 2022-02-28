@@ -125,6 +125,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-loader</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
